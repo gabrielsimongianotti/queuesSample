@@ -2,9 +2,9 @@ import { BullModule } from '@nestjs/bull';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { FileConsumer } from './file.consumer';
+import { FileConsumer } from './bull/file.consumer';
 import { FileProducerService } from './file.producer.service';
-import { MessageConsumer } from './message.consumer';
+import { MessageConsumer } from './bull/message.consumer';
 import { MessageProducerService } from './message.producer.service';
 
 @Module({
