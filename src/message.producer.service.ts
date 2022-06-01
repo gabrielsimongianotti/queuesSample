@@ -7,6 +7,7 @@ export class MessageProducerService {
   constructor(@InjectQueue('message-queue') private readonly bull: Queue) {}
 
   async sendMessagemsg(message: string): Promise<void> {
-    await this.bull.add('message', { message }, { delay: 1000 });
+    console.log('sendMessagemsg', message);
+    await this.bull.add('message', { message });
   }
 }

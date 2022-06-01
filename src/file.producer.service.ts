@@ -8,7 +8,7 @@ export class FileProducerService {
 
   async deleteFile(fileName: string) {
     const filePath = `/Users/gabrielsimongianiotti/project/queues-sample/images/${fileName}.png`;
-    // implementh logic delete the file record from database.
+
     await this.queue.add('delete-file', {
       filePath: filePath,
     });
