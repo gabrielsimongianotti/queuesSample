@@ -1,6 +1,5 @@
-import { AmqpConnection, RabbitRPC } from "@golevelup/nestjs-rabbitmq";
+import { RabbitRPC } from "@golevelup/nestjs-rabbitmq";
 import { Injectable } from "@nestjs/common";
-import { ConsumeMessage } from "amqplib";
 
 @Injectable()
 export class MessagingService {
