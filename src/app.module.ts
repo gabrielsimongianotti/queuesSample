@@ -1,36 +1,12 @@
-import { BullModule } from '@nestjs/bull';
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { FileConsumer } from './bull/file.consumer';
-import { FileProducerService } from './file.producer.service';
-import { MessageConsumer } from './bull/message.consumer';
-import { MessageProducerService } from './message.producer.service';
+import { Module } from "@nestjs/common";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
+import { BullQueueModule } from "./bull/bull.module";
+import { RabbitModule } from "./rabbitmq/rabbit.module";
 
 @Module({
-  imports: [
-    BullModule.forRoot({
-      redis: {
-        host: 'localhost',
-        port: 6379,
-      },
-    }),
-    BullModule.registerQueue(
-      {
-        name: 'message-queue',
-      },
-      {
-        name: 'file-operation-queue',
-      },
-    ),
-  ],
+  imports: [RabbitModule, BullQueueModule],
   controllers: [AppController],
-  providers: [
-    AppService,
-    MessageProducerService,
-    FileProducerService,
-    MessageConsumer,
-    FileConsumer,
-  ],
+  providers: [AppService],
 })
 export class AppModule {}
