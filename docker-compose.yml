@@ -1,0 +1,21 @@
+version: "3.5"
+
+services:
+  rabbitmq-container:
+    image: rabbitmq:3.7.4-management-alpine
+    ports:
+      - 15671:15671
+      - 15672:15672
+      - 25672:25672
+      - 4369:4369
+      - 5671:5671
+      - 5672:5672
+    environment:
+      default_user: "guest"
+      default_pass: "guest"
+    mem_limit: "300m"
+  redis:
+    image: "redis:alpine"
+    hostname: redis
+    ports:
+      - "6379:6379"
